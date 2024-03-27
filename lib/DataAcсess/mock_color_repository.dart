@@ -3,13 +3,13 @@ import 'package:surf_flutter_courses_template/Models/color_dto.dart';
 
 class MockColorRepository implements IColorRepository {
   final List<ColorDto> _colors = [
-    ColorDto("fucsia", "ff00ff"),
-    ColorDto("inv", "00ff00"),
-    ColorDto("gray", "808080"),
-    ColorDto("orange", "ff9505"),
-    ColorDto("bronze", "ffdae9"),
-    ColorDto("dark", "010203"),
-    ColorDto("FFBE", "00ffbe"),
+    ColorDto("Fucsia", "ff00ff"),
+    ColorDto("Inv", "00ff00"),
+    ColorDto("Gray", "808080"),
+    ColorDto("Orange", "ff9505"),
+    ColorDto("Bronze", "ffdae9"),
+    ColorDto("Dark", "010203"),
+    ColorDto("Ffbe", "00ffbe"),
   ];
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:surf_flutter_courses_template/Components/color_card.dart';
 import 'package:surf_flutter_courses_template/DataAc%D1%81ess/i_color_repository.dart';
 import 'package:surf_flutter_courses_template/Models/color_dto.dart';
 import 'package:surf_flutter_courses_template/Utils/hex_color.dart';
@@ -69,18 +70,7 @@ class ColorsGrid extends StatelessWidget {
       crossAxisSpacing: 22,
       mainAxisSpacing: 40,
       childAspectRatio: 100 / 140,
-      children: [
-        ..._colors.map(
-          (e) => Container(
-            height: 140,
-            width: 100,
-            color: HexColor.fromHex('#${e.hex}'),
-            child: Center(
-              child: Text(e.name),
-            ),
-          ),
-        ),
-      ],
+      children: [..._colors.map((e) => ColorCard(colorDto: e))],
     );
   }
 }
