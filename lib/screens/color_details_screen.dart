@@ -3,35 +3,51 @@ import 'package:surf_flutter_courses_template/Models/color_dto.dart';
 import 'package:surf_flutter_courses_template/Utils/hex_color.dart';
 
 class ColorDetailsScreen extends StatelessWidget {
-  ColorDto _colorDto;
+  final ColorDto _colorDto;
 
-  ColorDetailsScreen({super.key, required ColorDto colorDto})
+  const ColorDetailsScreen({super.key, required ColorDto colorDto})
       : _colorDto = colorDto;
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
+    var height = MediaQuery.sizeOf(context).height;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        toolbarHeight: height / 2,
-        backgroundColor: HexColor.fromHex(_colorDto.hex),
-        // leading: IconButton(
-        //   icon: Icon(
-        //     Icons.arrow_back_ios,
-        //     color: Colors.black,
-        //     size: 24,
-        //   ),
-        //   onPressed: () => Navigator.of(context).pop(),
-        // ),
-      ),
-      body: Container(
-        color: Colors.black,
-        child: Center(
-          child: Container(
-            height: 300,
-            width: 300,
+        backgroundColor: Colors.transparent,
+        leading: GestureDetector(
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
           ),
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
+      ),
+
+      //toolbarHeight: height / 2,
+      //backgroundColor: HexColor.fromHex(_colorDto.hex),
+      // leading: IconButton(
+      //   icon: Icon(
+      //     Icons.arrow_back_ios,
+      //     color: Colors.black,
+      //     size: 24,
+      //   ),
+      //   onPressed: () => Navigator.of(context).pop(),
+      // ),
+
+      body: Column(
+        children: [
+          Hero(
+            tag: _colorDto.hex,
+            child: Container(
+              height: height / 2,
+              width: double.infinity,
+              color: HexColor.fromHex(_colorDto.hex),
+            ),
+          ),
+        ],
       ),
     );
   }
