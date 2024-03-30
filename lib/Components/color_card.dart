@@ -12,6 +12,8 @@ class ColorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,19 +46,11 @@ class ColorCard extends StatelessWidget {
           ),
           Text(
             _colorDto.name,
-            style: GoogleFonts.ubuntu(
-              fontWeight: FontWeight.w400,
-              fontSize: 12,
-              color: const Color(0xFF252838),
-            ),
+            style: theme.textTheme.bodySmall,
           ),
           Text(
             _colorDto.hex,
-            style: GoogleFonts.ubuntu(
-              fontWeight: FontWeight.w400,
-              fontSize: 12,
-              color: const Color(0xFF252838),
-            ),
+            style: theme.textTheme.bodySmall,
           ),
         ],
       ),
