@@ -74,7 +74,28 @@ class ColorDetailsScreen extends StatelessWidget {
                       Text(_colorDto.hex),
                     ],
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    // final snackBar = SnackBar(
+                    //   width: 173,
+                    //   padding: EdgeInsets.zero,
+                    //   shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(16),
+                    //   ),
+                    //   content: Container(
+                    //     height: 64,
+                    //     child: Center(
+                    //       child: Text(
+                    //         "Hex скопирован",
+                    //         style: theme.textTheme.bodyMedium!.copyWith(
+                    //           color: Colors.white,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    //   behavior: SnackBarBehavior.floating,
+                    // );
+                    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
                 ),
                 SizedBox(
                   height: 16,
@@ -82,26 +103,17 @@ class ColorDetailsScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      height: 56,
-                      child: ElevatedButton(
-                        child: Text("Red ${color.red}"),
-                        onPressed: () {},
-                      ),
+                    DetailsButton(
+                      child: Text("Red ${color.red}"),
+                      onPressed: () {},
                     ),
-                    SizedBox(
-                      height: 56,
-                      child: ElevatedButton(
-                        child: Text("Green ${color.green}"),
-                        onPressed: () {},
-                      ),
+                    DetailsButton(
+                      child: Text("Green ${color.green}"),
+                      onPressed: () {},
                     ),
-                    SizedBox(
-                      height: 56,
-                      child: ElevatedButton(
-                        child: Text("Blue ${color.blue}"),
-                        onPressed: () {},
-                      ),
+                    DetailsButton(
+                      child: Text("Blue ${color.blue}"),
+                      onPressed: () {},
                     ),
                   ],
                 ),

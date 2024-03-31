@@ -33,6 +33,23 @@ class AppTheme {
           ),
         ),
       ),
+      // snackBarTheme: SnackBarThemeData( width: 173,
+      //                 padding: EdgeInsets.zero,
+      //                 shape: RoundedRectangleBorder(
+      //                   borderRadius: BorderRadius.circular(16),
+      //                 ),
+      //                 content: Container(
+      //                   height: 64,
+      //                   child: Center(
+      //                     child: Text(
+      //                       "Hex скопирован",
+      //                       style: theme.textTheme.bodyMedium!.copyWith(
+      //                         color: Colors.white,
+      //                       ),
+      //                     ),
+      //                   ),
+      //                 ),
+      //                 behavior: SnackBarBehavior.floating,)
     );
   }
 }
