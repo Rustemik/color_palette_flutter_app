@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:surf_flutter_courses_template/Models/color_dto.dart';
 import 'package:surf_flutter_courses_template/Screens/color_details_screen.dart';
 import 'package:surf_flutter_courses_template/Utils/hex_color.dart';
+import 'package:surf_flutter_courses_template/utils/copy_helper.dart';
 
 class ColorCard extends StatelessWidget {
   ColorDto _colorDto;
@@ -27,30 +25,8 @@ class ColorCard extends StatelessWidget {
               color: HexColor.fromHex(_colorDto.hex),
               child: InkWell(
                 onLongPress: () async {
-                  await Clipboard.setData(
-                    ClipboardData(text: _colorDto.hex),
-                  );
-                  final snackBar = SnackBar(
-                    width: 173,
-                    padding: EdgeInsets.zero,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    content: Container(
-                      height: 64,
-                      child: Center(
-                        child: Text(
-                          "Hex скопирован",
-                          style: theme.textTheme.bodyMedium!.copyWith(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    behavior: SnackBarBehavior.floating,
-                  );
-
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  await CopyHelper.copyWithSnackbar(
+                      context, _colorDto.hex, "Hex скопирован");
                 },
                 onTap: () {
                   Navigator.push<ColorDetailsScreen>(
@@ -61,14 +37,14 @@ class ColorCard extends StatelessWidget {
                             )),
                   );
                 },
-                child: SizedBox(
+                child: const SizedBox(
                   height: 100,
                   width: 100,
                 ),
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Text(
@@ -84,40 +60,3 @@ class ColorCard extends StatelessWidget {
     );
   }
 }
-
-
-
-// class ColorCard extends StatelessWidget {
-//   ColorDto _colorDto;
-
-//   ColorCard({super.key, required ColorDto colorDto}) : _colorDto = colorDto;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: 140,
-//       width: 100,
-//       child: Center(
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             Material(
-//               borderRadius: BorderRadius.circular(16),
-//               clipBehavior: Clip.antiAlias,
-//               color: HexColor.fromHex(_colorDto.hex),
-//               child: InkWell(
-//                 onTap: () {
-//                   Navigator.push<ColorDetailsScreen>(
-//                     context,
-//                     MaterialPageRoute(
-//                         builder: (context) => ColorDetailsScreen(
-//                               colorDto: _colorDto,
-//                             )),
-//                   );
-//                 },
-//                 child: SizedBox(
-//                   height: 100,
-//                   width: 100,
-//                 ),
-//               ),
-//             ),

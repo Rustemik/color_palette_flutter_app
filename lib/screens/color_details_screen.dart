@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:surf_flutter_courses_template/Models/color_dto.dart';
 import 'package:surf_flutter_courses_template/Utils/hex_color.dart';
+import 'package:surf_flutter_courses_template/components/details_button.dart';
+import 'package:surf_flutter_courses_template/utils/copy_helper.dart';
 
 class ColorDetailsScreen extends StatelessWidget {
   final ColorDto _colorDto;
@@ -13,8 +12,8 @@ class ColorDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.sizeOf(context).height;
-    var color = HexColor.fromHex(_colorDto.hex);
+    final height = MediaQuery.sizeOf(context).height;
+    final color = HexColor.fromHex(_colorDto.hex);
     final theme = Theme.of(context);
 
     return Scaffold(
@@ -31,18 +30,6 @@ class ColorDetailsScreen extends StatelessWidget {
           },
         ),
       ),
-
-      //toolbarHeight: height / 2,
-      //backgroundColor: HexColor.fromHex(_colorDto.hex),
-      // leading: IconButton(
-      //   icon: Icon(
-      //     Icons.arrow_back_ios,
-      //     color: Colors.black,
-      //     size: 24,
-      //   ),
-      //   onPressed: () => Navigator.of(context).pop(),
-      // ),
-
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -63,7 +50,7 @@ class ColorDetailsScreen extends StatelessWidget {
                   _colorDto.name,
                   style: theme.textTheme.bodyLarge,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 DetailsButton(
@@ -74,30 +61,12 @@ class ColorDetailsScreen extends StatelessWidget {
                       Text(_colorDto.hex),
                     ],
                   ),
-                  onPressed: () {
-                    // final snackBar = SnackBar(
-                    //   width: 173,
-                    //   padding: EdgeInsets.zero,
-                    //   shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(16),
-                    //   ),
-                    //   content: Container(
-                    //     height: 64,
-                    //     child: Center(
-                    //       child: Text(
-                    //         "Hex скопирован",
-                    //         style: theme.textTheme.bodyMedium!.copyWith(
-                    //           color: Colors.white,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    //   behavior: SnackBarBehavior.floating,
-                    // );
-                    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  onPressed: () async {
+                    await CopyHelper.copyWithSnackbar(
+                        context, _colorDto.hex, "Hex скопирован");
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Row(
@@ -105,15 +74,24 @@ class ColorDetailsScreen extends StatelessWidget {
                   children: [
                     DetailsButton(
                       child: Text("Red ${color.red}"),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await CopyHelper.copyWithSnackbar(
+                            context, color.red.toString(), "Red скопирован");
+                      },
                     ),
                     DetailsButton(
                       child: Text("Green ${color.green}"),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await CopyHelper.copyWithSnackbar(context,
+                            color.green.toString(), "Green скопирован");
+                      },
                     ),
                     DetailsButton(
                       child: Text("Blue ${color.blue}"),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await CopyHelper.copyWithSnackbar(
+                            context, color.blue.toString(), "Blue скопирован");
+                      },
                     ),
                   ],
                 ),
@@ -121,39 +99,6 @@ class ColorDetailsScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class DetailsButton extends StatelessWidget {
-  const DetailsButton({
-    super.key,
-    required Widget child,
-    required Function()? onPressed,
-  })  : _child = child,
-        _onPressed = onPressed;
-
-  final Widget _child;
-  final Function()? _onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      //width: double.infinity,
-      height: 56,
-      decoration: BoxDecoration(
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 6,
-            offset: Offset(0, 10),
-          ),
-        ],
-      ),
-      child: ElevatedButton(
-        child: _child,
-        onPressed: _onPressed,
       ),
     );
   }
