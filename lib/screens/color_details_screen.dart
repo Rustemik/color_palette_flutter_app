@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:surf_flutter_courses_template/Models/color_dto.dart';
 import 'package:surf_flutter_courses_template/Utils/hex_color.dart';
+import 'package:surf_flutter_courses_template/assets/app_strings.dart';
 import 'package:surf_flutter_courses_template/components/details_button.dart';
 import 'package:surf_flutter_courses_template/utils/copy_helper.dart';
 
@@ -62,8 +63,8 @@ class ColorDetailsScreen extends StatelessWidget {
                     ],
                   ),
                   onPressed: () async {
-                    await CopyHelper.copyWithSnackbar(
-                        context, _colorDto.hex, "Hex скопирован");
+                    await CopyHelper.copyWithSnackbar(context, _colorDto.hex,
+                        "${AppStrings.hex} ${AppStrings.copied}");
                   },
                 ),
                 const SizedBox(
@@ -76,21 +77,27 @@ class ColorDetailsScreen extends StatelessWidget {
                       child: Text("Red ${color.red}"),
                       onPressed: () async {
                         await CopyHelper.copyWithSnackbar(
-                            context, color.red.toString(), "Red скопирован");
+                            context,
+                            color.red.toString(),
+                            "${AppStrings.red} ${AppStrings.copied}");
                       },
                     ),
                     DetailsButton(
                       child: Text("Green ${color.green}"),
                       onPressed: () async {
-                        await CopyHelper.copyWithSnackbar(context,
-                            color.green.toString(), "Green скопирован");
+                        await CopyHelper.copyWithSnackbar(
+                            context,
+                            color.green.toString(),
+                            "${AppStrings.green} ${AppStrings.copied}");
                       },
                     ),
                     DetailsButton(
                       child: Text("Blue ${color.blue}"),
                       onPressed: () async {
                         await CopyHelper.copyWithSnackbar(
-                            context, color.blue.toString(), "Blue скопирован");
+                            context,
+                            color.blue.toString(),
+                            "${AppStrings.blue} ${AppStrings.copied}");
                       },
                     ),
                   ],
