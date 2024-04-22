@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:surf_flutter_courses_template/assets/app_assets.dart';
-import 'package:surf_flutter_courses_template/data_acсess/i_color_repository.dart';
-import 'package:surf_flutter_courses_template/Models/color_dto.dart';
+import 'package:color_palette_flutter_app/assets/app_assets.dart';
+import 'package:color_palette_flutter_app/data_acсess/i_color_repository.dart';
+import 'package:color_palette_flutter_app/Models/color_dto.dart';
 
 class MockColorRepository implements IColorRepository {
   ColorsData? _colorsData;

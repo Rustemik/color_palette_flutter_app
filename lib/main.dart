@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:surf_flutter_courses_template/data_ac%D1%81ess/i_color_repository.dart';
-import 'package:surf_flutter_courses_template/data_acсess/mock_color_repository.dart';
-import 'package:surf_flutter_courses_template/Screens/palette_screen.dart';
-import 'package:surf_flutter_courses_template/themes.dart';
+import 'package:color_palette_flutter_app/data_ac%D1%81ess/i_color_repository.dart';
+import 'package:color_palette_flutter_app/data_acсess/mock_color_repository.dart';
+import 'package:color_palette_flutter_app/Screens/palette_screen.dart';
+import 'package:color_palette_flutter_app/themes.dart';
 
 void main() {
   final repo = MockColorRepository();

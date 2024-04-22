@@ -1,4 +1,4 @@
-import 'package:surf_flutter_courses_template/Models/color_dto.dart';
+import 'package:color_palette_flutter_app/Models/color_dto.dart';
 
 abstract class IColorRepository {
   Future<List<ColorDto>> getColors();
