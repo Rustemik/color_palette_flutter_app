@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:surf_flutter_courses_template/Models/color_dto.dart';
 import 'package:surf_flutter_courses_template/Screens/color_details_screen.dart';
 import 'package:surf_flutter_courses_template/Utils/hex_color.dart';
+import 'package:surf_flutter_courses_template/assets/app_strings.dart';
 import 'package:surf_flutter_courses_template/utils/copy_helper.dart';
 
 class ColorCard extends StatelessWidget {
@@ -25,8 +26,8 @@ class ColorCard extends StatelessWidget {
               color: HexColor.fromHex(_colorDto.hex),
               child: InkWell(
                 onLongPress: () async {
-                  await CopyHelper.copyWithSnackbar(
-                      context, _colorDto.hex, "Hex скопирован");
+                  await CopyHelper.copyWithSnackbar(context, _colorDto.hex,
+                      "${AppStrings.hex} ${AppStrings.copied}");
                 },
                 onTap: () {
                   Navigator.push<ColorDetailsScreen>(
